@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1020">
+<meta name="description" content="AccessBridge AI — a voice-first accessibility assistant">
+<title>AccessBridge AI</title>
+<link rel="stylesheet" href="style.css?v=502">
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+<div class="brand"><div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div><div><b>AccessBridge</b><small>Voice accessibility assistant</small></div></div>
+<div class="status-pill"><i></i><span id="connectionStatus">Ready</span></div>
+</header>
+<main>
+<section class="home-page active" id="homePage">
+<div class="hero-copy">
+<p class="eyebrow">VOICE FIRST · ACCESSIBILITY</p>
+<h1>Your bridge to<br><em>everyday access.</em></h1>
+<p class="hero-sub">Talk to AccessBridge. No menus to search. No tiny controls to find.</p>
+</div>
+<div class="voice-stage">
+<div class="voice-halo halo-one"></div><div class="voice-halo halo-two"></div>
+<button id="listenBtn" class="voice-orb" aria-label="Activate AccessBridge and listen">
+<span class="orb-ring"></span><span class="orb-core"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V7a3.5 3.5 0 0 0-7 0v4a3.5 3.5 0 0 0 3.5 3.5Zm5-3.5a5 5 0 0 1-10 0m5 5v4m-3 0h6"/></svg></span>
+</button>
+<div class="voice-label"><strong id="listenStatus">Ready when you are</strong><span id="transcript">Tap the circle, then say “Access” and your request.</span></div>
+</div>
+<div class="conversation-card" aria-live="polite"><div class="conversation-top"><span>ACCESSBRIDGE</span><span id="conversationTime">—</span></div><p id="conversationText">I can call contacts, read news, tell you where you are, open WhatsApp, help with weather, search, reminders, camera reading and more.</p></div>
+<div class="voice-hint"><span class="hint-line"></span><span>Examples: “Access, where am I?” · “Access, open Indian news.” · “Access, call Rahul.”</span><span class="hint-line"></span></div>
+</section>
+<section class="utility-page" id="newsPage" aria-hidden="true">
+<div class="page-heading"><p>VOICE REQUEST</p><h2>News</h2><span id="newsStatus">Ready</span></div>
+<div class="category-strip"><button class="category active" data-category="top">Top</button><button class="category" data-category="india">India</button><button class="category" data-category="technology">Technology</button><button class="category" data-category="science">Science</button><button class="category" data-category="sports">Sports</button><button class="category" data-category="business">Business</button></div>
+<div id="newsList"></div>
+</section>
+<section class="utility-page" id="cameraPage" aria-hidden="true">
+<div class="page-heading"><p>VOICE REQUEST</p><h2>Camera Assist</h2><span id="cameraStatus">Camera is off.</span></div>
+<div class="camera-card"><video id="cameraVideo" autoplay playsinline muted></video><canvas id="cameraCanvas" hidden></canvas></div>
+<div class="vision-result" id="visionResult">Say “Access, read this” to read text, or “Access, what is in front of me?” to identify objects.</div>
+</section>
+<section class="utility-page" id="readPage" aria-hidden="true"><div class="page-heading"><p>VOICE REQUEST</p><h2>Read</h2></div><div class="read-panel"><textarea id="readText" placeholder="Type or paste text if you want AccessBridge to read it aloud."></textarea></div></section>
+<section class="utility-page" id="morePage" aria-hidden="true"><div class="page-heading"><p>VOICE REQUEST</p><h2>AccessBridge tools</h2></div><div class="hidden-tools"><input id="contactName"><input id="contactPhone"><div id="contactsList"></div><input id="reminderText"><input id="reminderTime" type="datetime-local"><div id="remindersList"></div><div id="calcInput"></div><div id="calcResult"></div></div></section>
+</main>
+<div class="sr-actions" aria-hidden="true"><button id="readPageBtn"></button><button id="speakTextBtn"></button><button id="stopSpeakBtn"></button><button id="emergencyBtn"></button><button id="startCameraBtn"></button><button id="stopCameraBtn"></button><button id="ocrBtn"></button><button id="detectBtn"></button><button id="refreshNewsBtn"></button><button id="saveContactBtn"></button><button id="addReminderBtn"></button></div>
+</div>
+<script src="accessibility.js?v=502"></script><script src="ai.js?v=502"></script><script src="news.js?v=502"></script><script src="contacts.js?v=502"></script><script src="camera.js?v=502"></script><script src="reminders.js?v=502"></script><script src="app.js?v=502"></script>
+</body>
+</html>
